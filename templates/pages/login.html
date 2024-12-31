@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+<!-- Titulo de la pagina --> {% block title %} Iniciar Secion {% endblock %}
+
+<!-- CSS -->
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/seccion.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <h2>Login</h2>
+    <form method="POST" action="{{ url_for('login') }}">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+    <p>¿No tienes una cuenta? <a href="{{ url_for('register') }}" class="register-link">Haz click aquí</a> para registrarte.</p>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const flashes = document.querySelectorAll('.flashes li');
+        if (flashes.length > 0) {
+            let message = '';
+            flashes.forEach(flash => {
+                message += flash.textContent + '\n';
+            });
+            alert(message);
+        }
+    });
+</script>
+{% endblock %}

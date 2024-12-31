@@ -1,0 +1,68 @@
+<img src="{{ url_for('static', filename='images/iconos/menu.png') }}" alt="Menu" class="fixed-menu" id="fixedMenu">
+
+<div class="menu-items" id="menuItems">
+    <button class="menu-item" id="menuItemTodo">Todo</button>
+    <button class="menu-item" id="menuItemCategoria">Categoria</button>
+    <button class="menu-item" id="menuItemMarca">Marca</button>
+</div>
+
+<style>
+    .fixed-menu {
+        width: 100px;
+        height: 100px;
+        position: fixed;
+        top: 80px; /* Ajusta esta propiedad para mover la imagen más abajo */
+        right: 20px; /* Ajusta esta propiedad para mover la imagen más a la derecha */
+        cursor: pointer;
+        border-radius: 50%; /* Hace que la imagen tenga bordes redondeados */
+        z-index: 1000; /* Asegura que el menú esté sobre las tarjetas */
+    }
+    .menu-items {
+        display: none;
+        position: fixed;
+        top: 80px; /* Ajusta esta propiedad para alinear con el menú */
+        right: 20px; /* Ajusta esta propiedad para alinear con el menú */
+        z-index: 1000; /* Asegura que los elementos del menú estén sobre las tarjetas */
+    }
+    .menu-item {
+        width: 100px;
+        height: 40px;
+        position: absolute;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        border-radius: 10px; /* Hace que los botones tengan bordes redondeados */
+        background-color: #007bff; /* Color de fondo de los botones (azul) */
+        border: 1px solid #ccc; /* Borde de los botones */
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        color: #fff; /* Color del texto */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para los botones */
+    }
+    .menu-item:hover {
+        background-color: #0056b3; /* Color de fondo al pasar el ratón (azul más oscuro) */
+    }
+    .menu-item:active {
+        background-color: #004085; /* Color de fondo al hacer clic (azul aún más oscuro) */
+    }
+</style>
+
+<script>
+    const fixedMenu = document.getElementById('fixedMenu');
+    const menuItems = document.getElementById('menuItems');
+    const menuItemTodo = document.getElementById('menuItemTodo');
+    const menuItemCategoria = document.getElementById('menuItemCategoria');
+    const menuItemMarca = document.getElementById('menuItemMarca');
+
+    fixedMenu.addEventListener('click', () => {
+        if (menuItems.style.display === 'none' || menuItems.style.display === '') {
+            menuItems.style.display = 'block';
+            menuItemTodo.style.transform = 'translate(-180px, -40px)';
+            menuItemCategoria.style.transform = 'translate(-210px, 30px)';
+            menuItemMarca.style.transform = 'translate(-180px, 100px)';
+        } else {
+            menuItems.style.display = 'none';
+        }
+    });
+</script>

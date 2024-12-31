@@ -1,0 +1,53 @@
+<div id="editProductModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeEditProductModal()">&times;</span>
+        <h2>Editar Producto</h2>
+        <form action="{{ url_for('editar_producto') }}" method="POST">
+            <input type="hidden" id="edit_product_id" name="id">
+            <label for="edit_product_name">Nombre:</label>
+            <input type="text" id="edit_product_name" name="nombre" required><br><br>
+            <label for="edit_product_description">Descripción:</label>
+            <input type="text" id="edit_product_description" name="descripcion" required><br><br>
+            <label for="edit_product_cost">Costo:</label>
+            <input type="number" id="edit_product_cost" name="costo" required><br><br>
+            <label for="edit_product_price">Precio:</label>
+            <input type="number" id="edit_product_price" name="precio" required><br><br>
+            <label for="edit_product_stock">Existencia:</label>
+            <input type="number" id="edit_product_stock" name="existencia" required><br><br>
+            <label for="edit_product_brand">Marca:</label>
+            <select id="edit_product_brand" name="marca_id">
+                {% for marca in marcas %}
+                <option value="{{ marca.id }}">{{ marca.nombre }}</option>
+                {% endfor %}
+            </select><br><br>
+            <label for="edit_product_photo">Foto (URL):</label>
+            <input type="text" id="edit_product_photo" name="foto"><br><br>
+            <label for="edit_product_category">Categoría:</label>
+            <select id="edit_product_category" name="categoria_id" required>
+                {% for categoria in categorias %}
+                <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+                {% endfor %}
+            </select><br><br>
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openEditProductModal(id, nombre, descripcion, costo, precio, existencia, marca_id, foto, categoria_id) {
+        document.getElementById('edit_product_id').value = id;
+        document.getElementById('edit_product_name').value = nombre;
+        document.getElementById('edit_product_description').value = descripcion;
+        document.getElementById('edit_product_cost').value = costo;
+        document.getElementById('edit_product_price').value = precio;
+        document.getElementById('edit_product_stock').value = existencia;
+        document.getElementById('edit_product_brand').value = marca_id;
+        document.getElementById('edit_product_photo').value = foto;
+        document.getElementById('edit_product_category').value = categoria_id;
+        document.getElementById('editProductModal').style.display = 'block';
+    }
+
+    function closeEditProductModal() {
+        document.getElementById('editProductModal').style.display = 'none';
+    }
+</script>

@@ -1,0 +1,141 @@
+
+<section class="apartados-container">
+    <h2>Mis Apartados</h2>
+    <div class="apartado-status">
+        <div class="flecha-izquierda">&#9664;</div>
+        <div class="productos-container">
+            <div class="apartado-item">
+                <img src="{{ url_for('static', filename='images/Jinx.jpg') }}" alt="Producto" class="apartado-img">
+                <div class="apartado-info">
+                    <p>Nombre del producto</p>
+                    <div class="cantidad-container">
+                        <p>Cantidad: 1</p>
+                        <div class="circulo-negro"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="apartado-item">
+                <img src="{{ url_for('static', filename='images/Jinx.jpg') }}" alt="Producto" class="apartado-img">
+                <div class="apartado-info">
+                    <p>Nombre del producto 2</p>
+                    <div class="cantidad-container">
+                        <p>Cantidad: 2</p>
+                        <div class="circulo-verde"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="apartado-item">
+                <img src="{{ url_for('static', filename='images/Jinx.jpg') }}" alt="Producto" class="apartado-img">
+                <div class="apartado-info">
+                    <p>Nombre del producto 3</p>
+                    <div class="cantidad-container">
+                        <p>Cantidad: 3</p>
+                        <div class="circulo-rojo"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Aquí puedes agregar más productos -->
+        </div>
+        <div class="flecha-derecha">&#9654;</div>
+    </div>
+</section>
+
+<style>
+    
+    /* Estilos para la sección apartados */
+    .apartados-container {
+        width: 100%;
+        padding: 20px;
+        background: #f9f9f9;
+        box-sizing: border-box;
+    }
+
+    .apartado-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .apartado-img {
+        width: 100px;
+        height: 100px;
+        margin-right: 20px;
+    }
+
+    .apartado-info {
+        flex: 1;
+    }
+
+    .apartado-status {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+        position: relative;
+    }
+
+    .flecha-izquierda,
+    .flecha-derecha {
+        cursor: pointer;
+        font-size: 24px;
+        user-select: none;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .flecha-izquierda {
+        left: 10px;
+    }
+
+    .flecha-derecha {
+        right: 10px;
+    }
+
+    .productos-container {
+        display: flex;
+        overflow-x: auto;
+        width: 80%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .apartado-item {
+        min-width: 150px;
+        margin: 0 10px;
+        box-sizing: border-box;
+    }
+
+    .cantidad-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .circulo-negro {
+        width: 10px;
+        height: 10px;
+        background-color: black;
+        border-radius: 50%;
+        margin-left: 10px;
+    }
+
+    .circulo-verde {
+        width: 10px;
+        height: 10px;
+        background-color: green;
+        border-radius: 50%;
+        margin-left: 10px;
+    }
+
+    .circulo-rojo {
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        border-radius: 50%;
+        margin-left: 10px;
+    }
+</style>

@@ -1,0 +1,140 @@
+<section class="bienvenida">
+    <div class="contenido-bienvenida">
+        <h1>Bienvenido a <span class="highlight">GAA</span></h1>
+        <p>Descubre productos diseñados para destacar en cada momento. ¡Empieza tu experiencia de compra con nosotros ahora!</p>
+        <a href="/productos" class="btn">Explorar Productos</a>
+    </div>
+</section>
+
+<style>
+    /* Sección de bienvenida */
+    .bienvenida {
+        background: linear-gradient(135deg, #0d6efd, #6610f2);
+        color: white;
+        text-align: center;
+        position: relative;
+        height: 50vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        padding: 20px; /* Añade algo de padding para dispositivos pequeños */
+    }
+
+    /* Contenedor */
+    .bienvenida .contenido-bienvenida {
+        z-index: 2;
+        max-width: 90%;
+    }
+
+    /* Título */
+    .bienvenida h1 {
+        font-size: 4em;
+        font-weight: 700;
+        margin-bottom: 20px; /* Espaciado entre el título y el texto */
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .bienvenida h1 .highlight {
+        color: #ffdd57;
+    }
+
+    /* Descripción */
+    .bienvenida p {
+        font-size: 1.4em;
+        margin: 0 0 30px; /* Espaciado entre el texto y el botón */
+        line-height: 1.8;
+        max-width: 700px;
+    }
+
+    /* Botón */
+    .bienvenida .btn {
+        padding: 15px 40px;
+        background: #ffdd57;
+        color: #0d6efd;
+        text-decoration: none;
+        font-size: 1.2em;
+        font-weight: 600;
+        border-radius: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .bienvenida .btn:hover {
+        background: #f7c400;
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Fondo animado */
+    .bienvenida::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent 60%);
+        animation: spin 20s linear infinite;
+        z-index: 1;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Responsividad */
+    @media (max-width: 1024px) {
+        .bienvenida h1 {
+            font-size: 3em;
+        }
+
+        .bienvenida p {
+            font-size: 1.2em;
+        }
+
+        .bienvenida .btn {
+            padding: 12px 35px;
+            font-size: 1.1em;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .bienvenida h1 {
+            font-size: 2.5em;
+        }
+
+        .bienvenida p {
+            font-size: 1.1em;
+        }
+
+        .bienvenida .btn {
+            padding: 10px 30px;
+            font-size: 1em;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .bienvenida h1 {
+            font-size: 2em;
+        }
+
+        .bienvenida p {
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        .bienvenida .btn {
+            padding: 8px 25px;
+            font-size: 0.9em;
+        }
+    }
+</style>

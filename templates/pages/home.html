@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+<!-- Titulo de la pagina --> {% block title %} YEYE - LUX {% endblock %}
+
+<!-- CSS -->
+{% block styles %}
+<!-- Estilos para la barra de navegacion -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+<!-- Estilos para el footer -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+{% endblock %}
+
+{% block menu %}
+<!-- Barrra de navegacion (Menu) --> {% include 'navbar.html' %}
+{% endblock %}
+
+<!-- Contenido de la pagina inicial -->
+<main class="main-container">
+    {% block content %}
+
+    {% if usuario %}
+    <!-- Si el usuario esta logueado -->
+    {% else %}
+    <!-- Si el usuario no esta logueado -->
+    {% endif %}
+
+    <!-- Componentes de la pagina (Secciones) -->
+    {% include 'components/home/bienvenida.html' %}
+    {% include 'components/home/categorias.html' %}
+    {% include 'components/home/marcas.html' %}
+
+    {% endblock %}
+</main>
+
+{% block footer %}
+<!-- Footer --> {% include 'footer.html' %}
+{% endblock %}

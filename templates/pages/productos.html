@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+<!-- Titulo de la pagina --> {% block title %}Productos{% endblock %}
+
+<!-- CSS -->
+{% block styles %}
+<!-- Estilos para la barra de navegacion -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+{% endblock %}
+
+{% block menu %}
+<!-- Barrra de navegacion (Menu) --> {% include 'navbar.html' %}
+{% endblock %}
+
+
+<!-- Contenido de la pagina de productos -->
+<main class="main-container"></main>
+    {% block content %}
+        {% include 'components/productos/card.html' %}
+    {% endblock %}
+</main>

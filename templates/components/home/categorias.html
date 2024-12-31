@@ -1,0 +1,65 @@
+<section class="category-container">
+    {% for categoria in categorias %}
+    <div class="category">
+        <img src="{{ url_for('static', filename='images/Jinx.jpg') }}" alt="{{ categoria.nombre }}">
+        <div class="category-name">{{ categoria.nombre }}</div>
+    </div>
+    {% endfor %}
+</section>
+
+<style>
+    .category-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 20px;
+        flex-wrap: nowrap; /* Evita que los elementos se envuelvan en varias líneas */
+        overflow-x: scroll; /* Permite el desplazamiento horizontal */
+        -ms-overflow-style: none;  /* Oculta la barra de desplazamiento en Internet Explorer y Edge */
+        scrollbar-width: none;  /* Oculta la barra de desplazamiento en Firefox */
+    }
+    .category-container::-webkit-scrollbar {
+        display: none;  /* Oculta la barra de desplazamiento en Chrome, Safari y Opera */
+    }
+    .category {
+        text-align: center;
+        flex: 0 0 auto; /* Evita que los elementos se ajusten automáticamente */
+        margin: 10px; /* Añade margen entre los elementos */
+    }
+    .category img {
+        width: 100px; /* Ajusta el tamaño según tus necesidades */
+        height: 100px; /* Ajusta el tamaño según tus necesidades */
+        border-radius: 50%;
+        object-fit: cover; /* Asegura que la imagen cubra el área del círculo */
+        transition: transform 0.3s ease; /* Añade una transición suave */
+    }
+    .category img:hover {
+        transform: scale(1.1); /* Escala la imagen al pasar el mouse */
+    }
+    .category-name {
+        margin-top: 10px;
+        font-size: 16px;
+        font-weight: bold; /* Hace el texto más grueso */
+        color: #333; /* Cambia el color del texto */
+        text-transform: uppercase; /* Convierte el texto a mayúsculas */
+        letter-spacing: 1px; /* Añade espacio entre las letras */
+        transition: color 0.3s ease; /* Añade una transición suave al color */
+    }
+
+    /* Media query para pantallas pequeñas */
+    @media (max-width: 600px) {
+        .category-container {
+            justify-content: flex-start; /* Alinea los elementos al inicio */
+        }
+        .category {
+            margin: 10px; /* Añade margen entre los elementos */
+        }
+        .category img {
+            width: 80px; /* Ajusta el tamaño según tus necesidades */
+            height: 80px; /* Ajusta el tamaño según tus necesidades */
+        }
+        .category-name {
+            font-size: 14px; /* Ajusta el tamaño del texto */
+        }
+    }
+</style>

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+<!-- Titulo de la pagina --> {% block title %}Perfil{% endblock %}
+
+<!-- CSS -->
+{% block styles %}
+<!-- Estilos para la barra de navegacion -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+<!-- Estilos para el footer -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+<!-- Estilos para los modal -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css') }}">
+{% endblock %}
+
+{% block menu %}
+<!-- Barrra de navegacion (Menu) --> {% include 'navbar.html' %}
+{% endblock %}
+
+<!-- Contenido de la pagina de perfil -->
+<main class="main-container">
+    {% block content %}
+        {% if user_role == 'cliente' %}
+            <!-- Si el usuario es cliente -->
+            {% include 'components/perfil/perfil.html' %}
+            {% include 'components/perfil/apartados.html' %}
+            
+            <!-- Modals -->
+            {% include 'modal/editarPerfil.html' %}
+            {% elif user_role == 'admin' %}
+            <!-- Si el usuario es administrador -->
+            {% include 'components/admin/admin.html' %}
+            {% include 'components/admin/tabla.html' %}
+            
+            <!-- Modals -->
+            {% include 'modal/agregarProducto.html' %}
+            {% include 'modal/editarProducto.html' %}
+        {% endif %}
+    {% endblock %}
+</main>
+
+{% block footer %}
+<!-- Footer --> {% include 'footer.html' %}
+{% endblock %}

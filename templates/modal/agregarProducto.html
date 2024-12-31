@@ -1,0 +1,36 @@
+<!-- Modal para agregar producto -->
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Agregar Producto</h2>
+        <form action="{{ url_for('agregar_producto') }}" method="POST">
+            <!-- Formulario para agregar producto -->
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br><br>
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required></textarea><br><br>
+            <label for="costo">Costo:</label>
+            <input type="number" step="0.01" id="costo" name="costo" required><br><br>
+            <label for="precio">Precio:</label>
+            <input type="number" step="0.01" id="precio" name="precio" required><br><br>
+            <label for="existencia">Cantidad Disponible:</label>
+            <input type="number" id="existencia" name="existencia" required><br><br>
+            <label for="marca_id">Marca:</label>
+            <select id="marca_id" name="marca_id">
+                <option value="">Seleccionar Marca</option>
+                {% for marca in marcas %}
+                <option value="{{ marca.id }}">{{ marca.nombre }}</option>
+                {% endfor %}
+            </select><br><br>
+            <label for="foto">Foto:</label>
+            <input type="text" id="foto" name="foto"><br><br>
+            <label for="categoria_id">Categoría:</label>
+            <select id="categoria_id" name="categoria_id" required>
+                {% for categoria in categorias %}
+                <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+                {% endfor %}
+            </select><br><br>
+            <button type="submit">Agregar</button>
+        </form>
+    </div>
+</div>

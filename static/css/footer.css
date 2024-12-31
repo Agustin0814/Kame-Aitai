@@ -1,0 +1,22 @@
+.footer {
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    /* Cambiado de 20px a 40px */
+    flex-wrap: nowrap;
+}

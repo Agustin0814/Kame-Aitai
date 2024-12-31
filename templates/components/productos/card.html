@@ -1,0 +1,157 @@
+<div class="card-container">
+    {% for producto in productos %}
+    <div class="card">
+        <div class="card-image">
+            <img src="{{ producto.foto }}" alt="{{ producto.nombre }}">
+            <div class="category-label">{{ producto.categoria.nombre }}</div>
+            <div class="card-description">
+                <p>{{ producto.descripcion }}</p>
+            </div>
+        </div>
+        <div class="card-content">
+            <h2>{{ producto.nombre }}</h2>
+            <p class="price">Precio: ${{ producto.precio }}</p>
+
+                        <p class="brand">Marca: {{ producto.marca.nombre if producto.marca else 'N/A' }}</p><div class="card-buttons">
+                <button class="btn btn-primary">Ver</button>
+                <button class="btn btn-secondary">Apartar</button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+    .card-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .card {
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-image {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 200px; /* Ajusta la altura según tus necesidades */
+    }
+
+    .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .card:hover img {
+        transform: scale(1.05);
+    }
+
+    .card-description {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        font-size: 0.9em;
+        padding: 5px; /* Cambiado de 10px a 5px */
+    }
+
+    .card:hover .card-description {
+        opacity: 1;
+    }
+
+    .category-label {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: black;
+        color: white;
+        font-size: 0.8em;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-transform: capitalize;
+        z-index: 1;
+    }
+
+    .card-content {
+        padding: 15px;
+    }
+
+    .card-content h2 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .price {
+        font-weight: bold;
+        color: #27ae60;
+        margin: 5px 0;
+    }
+
+    .brand {
+        font-size: 0.9em;
+        color: #555;
+    }
+
+    .card-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 0.9em;
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    .btn-secondary {
+        background-color: #ff69b4;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background-color: #ff1493;
+        transform: scale(1.05);
+    }
+
+    
+</style>

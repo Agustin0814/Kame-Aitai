@@ -1,0 +1,86 @@
+<header>
+    <div class="header-content">
+        <div class="header-text">
+            <h1>Hola, {{ admin_username }}</h1>
+            <p>Aqui podras Agregar, Ver, Editar y Eliminar productos</p>
+        </div>
+        <button class="add-button" onclick="openModal()">Agregar Producto</button>
+    </div>
+</header>
+
+<!-- Código de estilos -->
+<style>
+    /* Estilos del header */
+    header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-text {
+        text-align: left;
+    }
+
+    /* Estilos del botón de agregar */
+    .add-button {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .add-button:hover {
+        background-color: #218838;
+    }
+
+
+</style>
+
+<script>
+    function openModal() {
+        document.getElementById("productModal").style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("productModal").style.display = "none";
+    }
+
+    function openEditModal(id, nombre, descripcion, costo, precio, cantidad_disponible, marca, foto, categoria_id) {
+        document.getElementById("edit_id").value = id;
+        document.getElementById("edit_nombre").value = nombre;
+        document.getElementById("edit_descripcion").value = descripcion;
+        document.getElementById("edit_costo").value = costo;
+        document.getElementById("edit_precio").value = precio;
+        document.getElementById("edit_existencia").value = cantidad_disponible;
+        document.getElementById("edit_marca_id").value = marca;
+        document.getElementById("edit_foto").value = foto;
+        document.getElementById("edit_categoria_id").value = categoria_id;
+        document.getElementById("editProductModal").style.display = "block";
+    }
+
+    function closeEditModal() {
+        document.getElementById("editProductModal").style.display = "none";
+    }
+
+    function deleteProduct(productId) {
+        if (confirm("¿Estás seguro de que deseas eliminar este producto?")) {
+            window.location.href = "/eliminar_producto/" + productId;
+        }
+    }
+
+    window.onclick = function (event) {
+        if (event.target == document.getElementById("productModal")) {
+            closeModal();
+        }
+        if (event.target == document.getElementById("editProductModal")) {
+            closeEditModal();
+        }
+    }
+</script>

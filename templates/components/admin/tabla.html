@@ -1,0 +1,105 @@
+<section>
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Costo</th>
+                <th>Precio</th>
+                <th>Existencia</th>
+                <th>Marca</th>
+                <th>Foto</th>
+                <th>Categoría</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+            <tr>
+                <td>{{ producto.id }}</td>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.descripcion }}</td>
+                <td>{{ producto.costo }}</td>
+                <td>{{ producto.precio }}</td>
+                <td>{{ producto.existencia }}</td>
+                <td>{{ producto.marca.nombre if producto.marca else 'N/A' }}</td>
+                <td><img src="{{ producto.foto }}" alt="Foto del producto" class="product-photo"></td>
+                <td>{{ producto.categoria.nombre }}</td>
+                <td>
+                    <button class="edit-button" onclick="openEditProductModal({{ producto.id }}, '{{ producto.nombre }}', '{{ producto.descripcion }}', {{ producto.costo }}, {{ producto.precio }}, {{ producto.existencia }}, '{{ producto.marca.nombre if producto.marca else '' }}', '{{ producto.foto }}', {{ producto.categoria_id }})">
+                        <img src="{{ url_for('static', filename='images/iconos/editar.png') }}" alt="Editar" class="action-icon">
+                    </button>
+                    <button class="delete-button" onclick="deleteProduct({{ producto.id }})">
+                        <img src="{{ url_for('static', filename='images/iconos/eliminar.png') }}" alt="Eliminar" class="action-icon">
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+
+<style>
+    
+    /* Estilos para al tabla */
+    .product-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 18px;
+        text-align: left;
+    }
+
+    .product-table th,
+    .product-table td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+    }
+
+    .product-table th {
+        background-color: #f8f9fa;
+        color: #343a40;
+    }
+
+    .product-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .product-table tr:hover {
+        background-color: #e9ecef;
+    }
+
+    .edit-button,
+    .delete-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .edit-button img,
+    .delete-button img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+    }
+
+    .edit-button img {
+        background-color: #007bff;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    .delete-button img {
+        background-color: #dc3545;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    .product-photo {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+</style>

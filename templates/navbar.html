@@ -1,0 +1,40 @@
+<nav class="navbar">
+    <div class="container">
+        <!-- Logo --> <a class="navbar-brand" href="/"> <img src="{{ url_for('static', filename='images/marca/logo.jpg') }}" alt="Logo" class="logo"> </a>
+        <!-- Boton para moviles --> <button class="navbar-toggler" id="navbar-toggler"> &#9776; <!-- Icono de hamburguesa --> </button>
+        
+        <!-- Menu de navegacion -->
+        <div class="navbar-collapse" id="navbar-collapse">
+            <ul class="navbar-nav">
+                <!-- HOME--> <li class="nav-item"> <a class="nav-link" href="/">Inicio</a> </li>
+                <!-- PRODUCTOS --> <li class="nav-item"> <a class="nav-link" href="/productos">Productos</a> </li>
+                <!-- CONTACO --> <li class="nav-item"> <a class="nav-link" href="/contacto">Contacto</a> </li>
+                
+                {% if usuario %}
+                <!-- Si el usuario estA logueado -->
+                <li class="nav-item"> <a class="nav-link" href="/logout">Cerrar sesion</a> </li>
+                {% else %}
+                <!-- Si el usuario no estA logueado -->
+                <li class="nav-item"> <a class="nav-link" href="/login">Iniciar sesion</a> </li>
+                {% endif %}
+            </ul>
+        </div>
+        <!-- Icono de cesta -->
+        <div class="cart-icon">
+            {% if usuario %}
+            <!-- Si el usuario esta logueado -->
+            <a href="/perfil"> <img src="{{ url_for('static', filename='images/iconos/cesta.png') }}" alt="Cesta" class="icon"> </a>
+            {% else %}
+            <!-- Si el usuario no esta logueado -->
+            <a href="/login"> <img src="{{ url_for('static', filename='images/iconos/perfil.png') }}" alt="Perfil" class="icon"> </a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<script>
+    document.getElementById('navbar-toggler').addEventListener('click', function () {
+        const navbarCollapse = document.getElementById('navbar-collapse');
+        navbarCollapse.classList.toggle('active');
+    });
+</script>
