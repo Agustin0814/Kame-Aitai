@@ -4,7 +4,7 @@
         {% for marca in marcas %}
         <div class="card">
             <div class="overlay"></div>
-            <img src="{{ url_for('static', filename='images/marca/logo.jpg') }}" alt="{{ marca.nombre }}">
+            <img src="{{ marca.foto }}" alt="{{ marca.nombre }}">
             <div class="card-name">{{ marca.nombre }}</div>
         </div>
         {% endfor %}

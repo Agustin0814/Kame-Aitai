@@ -7,7 +7,7 @@ class Config:
         'port': '3306',
         'username': 'root',
         'password': 'Agustin45035',
-        'database': 'yeyelux'
+        'database': 'Kame'
     }
 
     SQLALCHEMY_DATABASE_URI = f"{DATABASE['drivername']}://{DATABASE['username']}:{DATABASE['password']}@{DATABASE['host']}:{DATABASE['port']}/{DATABASE['database']}"

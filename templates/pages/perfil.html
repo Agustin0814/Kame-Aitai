@@ -26,7 +26,15 @@
             
             <!-- Modals -->
             {% include 'modal/editarPerfil.html' %}
-            {% elif user_role == 'admin' %}
+        {% elif user_role == 'revendedor' %}
+            <!-- Si el usuario es revendedor -->
+
+            <!-- Contenido específico para revendedores -->
+        {% elif user_role == 'afiliado' %}
+            <!-- Si el usuario es afiliado -->
+             
+            <!-- Contenido específico para afiliados -->
+        {% elif user_role == 'administrador' %}
             <!-- Si el usuario es administrador -->
             {% include 'components/admin/admin.html' %}
             {% include 'components/admin/tabla.html' %}

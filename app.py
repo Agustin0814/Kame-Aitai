@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from config import Config
-from models import db, Usuario, Producto, Categoria, Marca, Perfil 
+from models import db, Usuario, Producto, Categoria, Marca, Perfil, Rol, Historial
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -13,9 +13,9 @@ with app.app_context():
 
 @app.route('/')
 def index():
-    usuario = session.get('usuario') 
-    categorias = Categoria.query.all() 
-    marcas = Marca.query.all() 
+    usuario = session.get('usuario')
+    categorias = Categoria.query.all()
+    marcas = Marca.query.all()
     return render_template('pages/home.html', usuario=usuario, categorias=categorias, marcas=marcas)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -26,14 +26,14 @@ def login():
         user = Usuario.query.filter_by(correo=correo).first()
         if user:
             if check_password_hash(user.contraseña, contraseña):
-                session['usuario'] = {'username': user.username, 'correo': user.correo, 'es_admin': user.es_admin}  # Guardar usuario en la sesión
+                session['usuario'] = {'username': user.username, 'correo': user.correo, 'es_admin': user.rol.rol == 'admin'}  # Guardar usuario en la sesión
                 return redirect(url_for('index'))
         return redirect(url_for('login'))
     return render_template('pages/login.html')
 
 @app.route('/logout')
 def logout():
-    session.pop('usuario', None) 
+    session.pop('usuario', None)
     return redirect(url_for('index'))
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -43,24 +43,15 @@ def register():
         nombre = request.form['nombre']
         correo = request.form['correo']
         contraseña = request.form['contraseña']
-        telefono = request.form.get('telefono') 
 
         if not username or not nombre or not correo or not contraseña:
-            return redirect(url_for('register'))
-        
-        existing_user = Usuario.query.filter_by(correo=correo).first()
-        if existing_user:
+            # Manejar error de campos faltantes
             return redirect(url_for('register'))
 
         hashed_password = generate_password_hash(contraseña, method='pbkdf2:sha256')
-        new_user = Usuario(username=username, nombre=nombre, correo=correo, contraseña=hashed_password, telefono=telefono)
-        db.session.add(new_user)
+        nuevo_usuario = Usuario(username=username, nombre=nombre, correo=correo, contraseña=hashed_password, rol_id=1)  # Asignar rol de cliente
+        db.session.add(nuevo_usuario)
         db.session.commit()
-
-        new_profile = Perfil(usuario_id=new_user.id)
-        db.session.add(new_profile)
-        db.session.commit()
-
         return redirect(url_for('login'))
     return render_template('pages/register.html')
 
@@ -81,11 +72,11 @@ def perfil():
     usuario = session['usuario']
     user = Usuario.query.filter_by(correo=usuario['correo']).first()
     perfil = Perfil.query.filter_by(usuario_id=user.id).first()
-    user_role = 'admin' if user.es_admin else 'cliente' 
+    user_role = user.rol.rol.lower()  # Obtener el rol del usuario en minúsculas
     productos = Producto.query.all()  
     categorias = Categoria.query.all()  
     marcas = Marca.query.all()
-    return render_template('pages/perfil.html', usuario=user, perfil=perfil, user_role=user_role, admin_username=user.username if user.es_admin else None, productos=productos, categorias=categorias, marcas=marcas)
+    return render_template('pages/perfil.html', usuario=user, perfil=perfil, user_role=user_role, admin_username=user.username if user.rol.rol == 'Administrador' else None, productos=productos, categorias=categorias, marcas=marcas)
 
 @app.route('/agregar_producto', methods=['POST'])
 def agregar_producto():
@@ -148,13 +139,8 @@ def editar_perfil():
     user = Usuario.query.filter_by(correo=usuario['correo']).first()
     perfil = Perfil.query.filter_by(usuario_id=user.id).first()
 
-    user.username = request.form['username']
-    user.nombre = request.form['nombre']
-    user.correo = request.form['correo']
     user.telefono = request.form['telefono']
-    if request.form['contraseña']:
-        user.contraseña = generate_password_hash(request.form['contraseña'], method='pbkdf2:sha256')
-
+    
     if perfil:
         perfil.foto = request.form['foto']
         perfil.direccion = request.form['direccion']
@@ -164,7 +150,7 @@ def editar_perfil():
 
     db.session.commit()
 
-    session['usuario'] = {'username': user.username, 'correo': user.correo, 'es_admin': user.es_admin}
+    session['usuario'] = {'username': user.username, 'correo': user.correo, 'es_admin': user.rol.rol == 'admin'}
     return redirect(url_for('perfil'))
 
 if __name__ == '__main__':

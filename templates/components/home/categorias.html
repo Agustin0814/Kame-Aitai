@@ -1,7 +1,7 @@
 <section class="category-container">
     {% for categoria in categorias %}
     <div class="category">
-        <img src="{{ url_for('static', filename='images/Jinx.jpg') }}" alt="{{ categoria.nombre }}">
+        <img src="{{ categoria.foto }}" alt="{{ categoria.nombre }}">
         <div class="category-name">{{ categoria.nombre }}</div>
     </div>
     {% endfor %}

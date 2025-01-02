@@ -11,8 +11,7 @@
             <p>Teléfono: {{ usuario.telefono }}</p>
             <p>Correo: {{ usuario.correo }}</p>
             <p>Dirección: {{ perfil.direccion }}</p>
-            <p>Historial de compras <span class="historial-count">0</span> <button class="btn-ver-historial">Ver
-                    Historial</button></p>
+            <p>Historial de compras <span class="historial-count">{{ perfil.historial | length if perfil.historial else 0 }}</span> <button class="btn-ver-historial">Ver Historial</button></p>
         </div>
     </div>
     <div class="perfil-reseñas">
@@ -20,10 +19,9 @@
         <div class="reseñas-lista">
             <div class="reseñas-contenedor">
                 <ul>
-                    <li>Reseña 2</li>
-                    <li>Reseña 3</li>
-                    <li>Reseña 4</li>
-                    <li>Reseña 5</li>
+                    {% for reseña in usuario.reseñas %}
+                    <li>{{ reseña }}</li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
@@ -54,9 +52,6 @@
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        max-width: 1200px; /* Altura mínima */
-        min-height: 400px; /* Altura automática */
-    
     }
 
     .perfil-info {
@@ -116,13 +111,9 @@
 
     .reseñas-contenedor {
         width: 300px;
-        /* Ajusta el ancho según tus necesidades */
         height: 320px;
-        /* Ajusta la altura según tus necesidades */
         overflow-y: auto;
-        /* Opcional: añade un borde para visualizar mejor el contenedor */
         padding: 0px;
-        /* Opcional: añade un relleno interno */
     }
 
     .perfil-reseñas h2 {
