@@ -1,5 +1,4 @@
-from flask import Blueprint, request, redirect, url_for, render_template # type: ignore
-from app.models import Producto, db
+from flask import Blueprint, request, redirect, url_for, render_template
 
 # Crear el blueprint
 products_bp = Blueprint('products', __name__, url_prefix='/products')

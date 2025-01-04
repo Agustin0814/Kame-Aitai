@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, url_for # type: ignore
+from flask import Blueprint, render_template, url_for
 from app.models import Producto, Categoria, Marca, Usuario
 
 # Crear el blueprint

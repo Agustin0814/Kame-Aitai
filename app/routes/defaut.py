@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, session # type: ignore
+from flask import Blueprint, render_template, session
 from app.models import Categoria, Marca
 
 # Crea un Blueprint para este módulo

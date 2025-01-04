@@ -1,6 +1,5 @@
-from flask import Blueprint, render_template, request, redirect, url_for, session # type: ignore
-from werkzeug.security import generate_password_hash, check_password_hash # type: ignore
-from app.models import Usuario, db
+from flask import Blueprint, render_template, request, redirect, url_for, session 
+from werkzeug.security import generate_password_hash, check_password_hash
 
 # Crear el blueprint
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
