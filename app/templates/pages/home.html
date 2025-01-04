@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-<!-- Titulo de la pagina --> {% block title %} YEYE - LUX {% endblock %}
+<!-- Titulo de la pagina --> {% block title %} KAME - AITAI {% endblock %}
 
 <!-- CSS -->
 {% block styles %}
@@ -17,18 +17,10 @@
 <!-- Contenido de la pagina inicial -->
 <main class="main-container">
     {% block content %}
-
-    {% if usuario %}
-    <!-- Si el usuario esta logueado -->
-    {% else %}
-    <!-- Si el usuario no esta logueado -->
-    {% endif %}
-
-    <!-- Componentes de la pagina (Secciones) -->
-    {% include 'components/home/bienvenida.html' %}
-    {% include 'components/home/categorias.html' %}
-    {% include 'components/home/marcas.html' %}
-
+        <!-- Componentes de la pagina de inicio (Secciones) -->
+        {% include 'components/home/bienvenida.html' %}
+        {% include 'components/home/categorias.html' %}
+        {% include 'components/home/marcas.html' %}
     {% endblock %}
 </main>
 

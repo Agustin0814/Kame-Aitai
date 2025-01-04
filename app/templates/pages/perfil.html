@@ -23,25 +23,24 @@
             <!-- Si el usuario es cliente -->
             {% include 'components/perfil/perfil.html' %}
             {% include 'components/perfil/apartados.html' %}
-            
             <!-- Modals -->
             {% include 'modal/editarPerfil.html' %}
         {% elif user_role == 'revendedor' %}
             <!-- Si el usuario es revendedor -->
-
-            <!-- Contenido específico para revendedores -->
+            <h2>Contenido específico para revendedores</h2>
+            <!-- Aquí puedes incluir otros templates o contenido específico para revendedores -->
         {% elif user_role == 'afiliado' %}
             <!-- Si el usuario es afiliado -->
-             
-            <!-- Contenido específico para afiliados -->
+            <h2>Contenido específico para afiliados</h2>
+            <!-- Aquí puedes incluir otros templates o contenido específico para afiliados -->
         {% elif user_role == 'administrador' %}
             <!-- Si el usuario es administrador -->
+            <!-- Aquí puedes incluir otros templates o contenido específico para administradores -->
             {% include 'components/admin/admin.html' %}
             {% include 'components/admin/tabla.html' %}
-            
-            <!-- Modals -->
-            {% include 'modal/agregarProducto.html' %}
-            {% include 'modal/editarProducto.html' %}
+        {% else %}
+            <!-- Si el rol del usuario no es reconocido -->
+            <h2>Rol de usuario no reconocido</h2>
         {% endif %}
     {% endblock %}
 </main>

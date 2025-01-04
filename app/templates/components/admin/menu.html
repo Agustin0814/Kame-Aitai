@@ -1,0 +1,68 @@
+<nav class="admin-menu">
+    <ul>
+        <li>
+            <a href="#tablas">Tablas</a>
+            <ul class="submenu">
+                <li><a href="{{ url_for('admin_panel', component='productos') }}">Productos</a></li>
+                <li><a href="{{ url_for('admin_panel', component='catalogo') }}">Catálogo</a></li>
+                <li><a href="{{ url_for('admin_panel', component='marcas') }}">Marcas</a></li>
+            </ul>
+        </li>
+        <li><a href="#apartados">Apartados</a></li>
+        <li>
+            <a href="#asociados">Asociados</a>
+            <ul class="submenu">
+                <li><a href="#revendedores">Revendedores</a></li>
+                <li><a href="#afiliados">Afiliados</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+
+<style>
+    .admin-menu {
+        margin: 40px 20%;
+        text-align: center;
+        background-color: #f8f9fa;
+        border-radius: 30px;
+        padding: 10px;
+    }
+
+    .admin-menu ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .admin-menu li {
+        display: inline-block;
+        margin: 0 15px;
+        position: relative;
+    }
+
+    .admin-menu a {
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    .admin-menu .submenu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 10px;
+        list-style-type: none;
+        white-space: nowrap; /* Ensure the submenu width adapts to its content */
+    }
+
+    .admin-menu li:hover .submenu {
+        display: block;
+    }
+
+    .admin-menu .submenu li {
+        display: block;
+        margin: 10px 0; /* Increase vertical margin */
+    }
+</style>

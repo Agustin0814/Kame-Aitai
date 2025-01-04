@@ -30,6 +30,12 @@
                 <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
                 {% endfor %}
             </select><br><br>
+            <label for="propietario_id">Propietario:</label>
+            <select id="propietario_id" name="propietario_id" required>
+                {% for usuario in usuarios %}
+                <option value="{{ usuario.id }}">{{ usuario.nombre }}</option>
+                {% endfor %}
+            </select><br><br>
             <button type="submit">Agregar</button>
         </form>
     </div>

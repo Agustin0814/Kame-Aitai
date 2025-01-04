@@ -1,13 +1,14 @@
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine # type: ignore
 
+# Configuración de la base de datos
 class Config:
     DATABASE = {
         'drivername': 'mysql+pymysql',
-        'host': 'localhost',
-        'port': '3306',
-        'username': 'root',
-        'password': 'Agustin45035',
-        'database': 'Kame'
+        'host': '',
+        'port': '3',
+        'username': '',
+        'password': '',
+        'database': ''
     }
 
     SQLALCHEMY_DATABASE_URI = f"{DATABASE['drivername']}://{DATABASE['username']}:{DATABASE['password']}@{DATABASE['host']}:{DATABASE['port']}/{DATABASE['database']}"

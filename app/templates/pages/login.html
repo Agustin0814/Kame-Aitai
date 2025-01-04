@@ -10,7 +10,7 @@
 {% block content %}
 <div class="login-container">
     <h2>Login</h2>
-    <form method="POST" action="{{ url_for('login') }}">
+    <form method="POST" action="{{ url_for('auth.login') }}">
         <div class="form-group">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
@@ -21,7 +21,7 @@
         </div>
         <button type="submit">Login</button>
     </form>
-    <p>¿No tienes una cuenta? <a href="{{ url_for('register') }}" class="register-link">Haz click aquí</a> para registrarte.</p>
+    <p>¿No tienes una cuenta? <a href="{{ url_for('auth.register') }}" class="register-link">Haz click aquí</a> para registrarte.</p>
 </div>
 
 <script>
