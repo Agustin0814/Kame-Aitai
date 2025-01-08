@@ -20,4 +20,3 @@ def admin_panel(component):
         return render_template('pages/perfil.html', user_role='administrador', categorias=categorias, marcas=marcas, usuarios=usuarios, active_component='tabla_marcas')
     else:
         return render_template('pages/perfil.html', user_role='administrador', categorias=categorias, marcas=marcas, usuarios=usuarios, active_component='default')
-    

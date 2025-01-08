@@ -5,13 +5,13 @@
 <!-- CSS -->
 {% block styles %}
 <!-- Estilos para la barra de navegacion -->
-<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/layout/navbar.css') }}">
 <!-- Estilos para el footer -->
-<link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/layout/footer.css') }}">
 {% endblock %}
 
 {% block menu %}
-<!-- Barrra de navegacion (Menu) --> {% include 'navbar.html' %}
+<!-- Barrra de navegacion (Menu) --> {% include 'layout/navbar.html' %}
 {% endblock %}
 
 
@@ -29,5 +29,5 @@
 </main>
 
 {% block footer %}
-<!-- Footer --> {% include 'footer.html' %}
+<!-- Footer --> {% include 'layout/footer.html' %}
 {% endblock %}

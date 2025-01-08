@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+<!-- Titulo de la pagina --> {% block title %}Auth{% endblock %}
+
+<!-- CSS -->
+{% block styles %}<!-- CSS -->{% endblock %}
+
+{% block content %}
+<div class="menu">
+    <button id="login-btn">Iniciar Secion</button>
+    <button id="register-btn">Registrarme</button>
+</div>
+
+{% include 'components/auth/login.html' %}
+{% include 'components/auth/register.html' %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const loginBtn = document.getElementById('login-btn');
+        const registerBtn = document.getElementById('register-btn');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+
+        loginBtn.addEventListener('click', function () {
+            loginForm.classList.add('active');
+            registerForm.classList.remove('active');
+        });
+
+        registerBtn.addEventListener('click', function () {
+            registerForm.classList.add('active');
+            loginForm.classList.remove('active');
+        });
+
+        const flashes = document.querySelectorAll('.flashes li');
+        if (flashes.length > 0) {
+            let message = '';
+            flashes.forEach(flash => {
+                message += flash.textContent + '\n';
+            });
+            alert(message);
+        }
+    });
+</script>
+{% endblock %}

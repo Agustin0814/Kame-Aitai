@@ -4,11 +4,14 @@
 
 <!-- CSS -->
 {% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/seccion.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/auth.css') }}">
+{% endblock %}
+
+{% block menu %}
 {% endblock %}
 
 {% block content %}
-<div class="login-container">
+<div id="login-form" class="form-container active">
     <h2>Login</h2>
     <form method="POST" action="{{ url_for('auth.login') }}">
         <div class="form-group">
@@ -23,17 +26,4 @@
     </form>
     <p>¿No tienes una cuenta? <a href="{{ url_for('auth.register') }}" class="register-link">Haz click aquí</a> para registrarte.</p>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const flashes = document.querySelectorAll('.flashes li');
-        if (flashes.length > 0) {
-            let message = '';
-            flashes.forEach(flash => {
-                message += flash.textContent + '\n';
-            });
-            alert(message);
-        }
-    });
-</script>
 {% endblock %}

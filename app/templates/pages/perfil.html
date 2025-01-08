@@ -5,15 +5,20 @@
 <!-- CSS -->
 {% block styles %}
 <!-- Estilos para la barra de navegacion -->
-<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
-<!-- Estilos para el footer -->
-<link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/layout/navbar.css') }}">
+<!-- Estilos para los perfiles -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/perfilCliente.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/perfilAdmin.css') }}">
+<!-- Estilos para las tablas -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/tablas.css') }}">
 <!-- Estilos para los modal -->
 <link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css') }}">
+<!-- Estilos para el footer -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/layout/footer.css') }}">
 {% endblock %}
 
 {% block menu %}
-<!-- Barrra de navegacion (Menu) --> {% include 'navbar.html' %}
+<!-- Barrra de navegacion (Menu) --> {% include 'layout/navbar.html' %}
 {% endblock %}
 
 <!-- Contenido de la pagina de perfil -->
@@ -46,5 +51,5 @@
 </main>
 
 {% block footer %}
-<!-- Footer --> {% include 'footer.html' %}
+<!-- Footer --> {% include 'layout/footer.html' %}
 {% endblock %}

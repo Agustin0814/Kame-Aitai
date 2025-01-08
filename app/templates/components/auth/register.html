@@ -4,11 +4,11 @@
 
 <!-- CSS -->
 {% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/seccion.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/auth.css') }}">
 {% endblock %}
 
 {% block content %}
-<div class="register-container">
+<div id="register-form" class="form-container">
     <h2>Register</h2>
     <form method="POST" action="{{ url_for('auth.register') }}">
         <div class="form-group">
@@ -31,16 +31,4 @@
     </form>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const flashes = document.querySelectorAll('.flashes li');
-        if (flashes.length > 0) {
-            let message = '';
-            flashes.forEach(flash => {
-                message += flash.textContent + '\n';
-            });
-            alert(message);
-        }
-    });
-</script>
 {% endblock %}

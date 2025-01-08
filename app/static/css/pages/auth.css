@@ -1,9 +1,30 @@
+
 body {
     background: linear-gradient(135deg, #6a11cb, #2575fc);
     display: flex;
 }
 
-.login-container {
+.menu {
+    position: absolute;
+    top: 40px;
+    margin: 0 auto;
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+}
+.menu button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.form-container {
+    display: none;
+}
+.form-container.active {
+    display: block;
+}
+
+
+.form-container {
     background-color: #fff;
     padding: 2rem;
     border-radius: 10px;
@@ -88,7 +109,7 @@ button:active {
 
 
 
-.register-container {
+.form-container {
     background-color: #fff;
     padding: 2rem;
     border-radius: 10px;

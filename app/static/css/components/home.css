@@ -1,0 +1,294 @@
+/* Estilos para la pagina de Inicio */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* Seccion de bienvenida */
+.bienvenida {
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    color: white;
+    text-align: center;
+    position: relative;
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 20px; /* Añade algo de padding para dispositivos pequeños */
+}
+
+/* Contenedor */
+.bienvenida .contenido-bienvenida {
+    z-index: 2;
+    max-width: 90%;
+}
+
+/* Título */
+.bienvenida h1 {
+    font-size: 4em;
+    font-weight: 700;
+    margin-bottom: 20px; /* Espaciado entre el título y el texto */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.bienvenida h1 .highlight {
+    color: #ffdd57;
+}
+
+/* Descripción */
+.bienvenida p {
+    font-size: 1.4em;
+    margin: 0 0 30px; /* Espaciado entre el texto y el botón */
+    line-height: 1.8;
+    max-width: 700px;
+}
+
+/* Botón */
+.bienvenida .btn {
+    padding: 15px 40px;
+    background: #ffdd57;
+    color: #0d6efd;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 600;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.bienvenida .btn:hover {
+    background: #f7c400;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Fondo animado */
+.bienvenida::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent 60%);
+    animation: spin 20s linear infinite;
+    z-index: 1;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsividad */
+@media (max-width: 1024px) {
+    .bienvenida h1 {
+        font-size: 3em;
+    }
+
+    .bienvenida p {
+        font-size: 1.2em;
+    }
+
+    .bienvenida .btn {
+        padding: 12px 35px;
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 768px) {
+    .bienvenida h1 {
+        font-size: 2.5em;
+    }
+
+    .bienvenida p {
+        font-size: 1.1em;
+    }
+
+    .bienvenida .btn {
+        padding: 10px 30px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .bienvenida h1 {
+        font-size: 2em;
+    }
+
+    .bienvenida p {
+        font-size: 1em;
+        line-height: 1.5;
+    }
+
+    .bienvenida .btn {
+        padding: 8px 25px;
+        font-size: 0.9em;
+    }
+}
+
+/* Seccion de Categorias */
+
+.category-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px;
+    flex-wrap: nowrap; /* Evita que los elementos se envuelvan en varias líneas */
+    overflow-x: scroll; /* Permite el desplazamiento horizontal */
+    -ms-overflow-style: none;  /* Oculta la barra de desplazamiento en Internet Explorer y Edge */
+    scrollbar-width: none;  /* Oculta la barra de desplazamiento en Firefox */
+}
+.category-container::-webkit-scrollbar {
+    display: none;  /* Oculta la barra de desplazamiento en Chrome, Safari y Opera */
+}
+.category {
+    text-align: center;
+    flex: 0 0 auto; /* Evita que los elementos se ajusten automáticamente */
+    margin: 10px; /* Añade margen entre los elementos */
+}
+.category img {
+    width: 100px; /* Ajusta el tamaño según tus necesidades */
+    height: 100px; /* Ajusta el tamaño según tus necesidades */
+    border-radius: 50%;
+    object-fit: cover; /* Asegura que la imagen cubra el área del círculo */
+    transition: transform 0.3s ease; /* Añade una transición suave */
+}
+.category img:hover {
+    transform: scale(1.1); /* Escala la imagen al pasar el mouse */
+}
+.category-name {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold; /* Hace el texto más grueso */
+    color: #333; /* Cambia el color del texto */
+    text-transform: uppercase; /* Convierte el texto a mayúsculas */
+    letter-spacing: 1px; /* Añade espacio entre las letras */
+    transition: color 0.3s ease; /* Añade una transición suave al color */
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 600px) {
+    .category-container {
+        justify-content: flex-start; /* Alinea los elementos al inicio */
+    }
+    .category {
+        margin: 10px; /* Añade margen entre los elementos */
+    }
+    .category img {
+        width: 80px; /* Ajusta el tamaño según tus necesidades */
+        height: 80px; /* Ajusta el tamaño según tus necesidades */
+    }
+    .category-name {
+        font-size: 14px; /* Ajusta el tamaño del texto */
+    }
+}
+
+/* Seccion de marcas  */
+
+.marca {
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    padding: 50px 0;
+    position: relative;
+    overflow: hidden;
+}
+.marca:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/wavecut.png');
+    opacity: 0.3;
+}
+.title {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+    color: #ffdd57;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        transform: scale(1.1);
+        text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    }
+    100% {
+        transform: scale(1);
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.cards-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10%;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    position: relative;
+    text-align: center;
+    width: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.card img {
+    width: 100%;
+    transition: opacity 0.5s;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 81.5%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+.card:hover .overlay {
+    opacity: 1;
+}
+
+
+.card-name {
+    transition: transform 0.8s, color 0.5s;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    color: #ffdd57;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+.card:hover .card-name {
+    transform: translateY(-90px) rotate(360deg);
+    color: chartreuse;
+}

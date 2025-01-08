@@ -5,16 +5,20 @@
 <!-- CSS -->
 {% block styles %}
 <!-- Estilos para la barra de navegacion -->
-<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/layout/navbar.css') }}">
+<!-- Estilos para la pagina de Productos -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+<!-- Estilos para la pagina de Inicio -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/productos.css') }}">
 {% endblock %}
 
 {% block menu %}
-<!-- Barrra de navegacion (Menu) --> {% include 'navbar.html' %}
+<!-- Barrra de navegacion (Menu) --> {% include 'layout/navbar.html' %}
 {% endblock %}
 
 
 <!-- Contenido de la pagina de productos -->
-<main class="main-container"></main>
+<main class="productos-container"></main>
     {% block content %}
         {% include 'components/productos/card.html' %}
     {% endblock %}
