@@ -9,7 +9,9 @@
                 <!-- HOME--> <li class="nav-item"> <a class="nav-link" href="/">Inicio</a> </li>
                 <!-- PRODUCTOS --> <li class="nav-item"> <a class="nav-link" href="/productos">Productos</a> </li>
                 <!-- CONTACTO --> <li class="nav-item"> <a class="nav-link" href="/contacto">Contacto</a> </li>
-                
+                <!-- SERVICIOS --> <li class="nav-item"> <a class="nav-link" href="/servicios">Servicios</a> </li>
+                <!-- SUBASTA --> <li class="nav-item"> <a class="nav-link" href="/subasta">Subasta</a> </li>
+
                 {% if usuario %}
                 <!-- Si el usuario está logueado -->
                 <li class="nav-item"> <a class="nav-link" href="{{ url_for('auth.logout') }}">Cerrar sesión</a> </li>

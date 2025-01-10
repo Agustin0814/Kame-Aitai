@@ -1,29 +1,19 @@
 {% extends 'base.html' %}
 
-<!-- Titulo de la pagina --> {% block title %}Contacto{% endblock %}
+<!-- Titulo de la pagina --> {% block title %} KAME - AITAI {% endblock %}
 
 <!-- CSS -->
 {% block styles %}
-<!-- Estilos para la barra de navegacion -->
+<!-- Estilos para la Barra de Navegacion -->
 <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/navbar.css') }}">
-<!-- Estilos para el footer -->
+<!-- Estilos para el Footer -->
 <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/footer.css') }}">
+<!-- Estilos para la pagina de Servicios -->
 {% endblock %}
 
 {% block menu %}
 <!-- Barrra de navegacion (Menu) --> {% include 'layout/navbar.html' %}
 {% endblock %}
-
-<!-- Contenido de la pagina inicial -->
-<main class="main-container">
-    {% block content %}
-    {% if usuario %}
-    <!-- Si el usuario esta logueado -->
-    {% else %}
-    <!-- Si el usuario no esta logueado -->
-    {% endif %}
-    {% endblock %}
-</main>
 
 {% block footer %}
 <!-- Footer --> {% include 'layout/footer.html' %}

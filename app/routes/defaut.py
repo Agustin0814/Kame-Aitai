@@ -13,4 +13,15 @@ def index():
 
 @default_bp.route('/contacto')
 def contacto():
-    return render_template('pages/contacto.html')
+    usuario = session.get('usuario')
+    return render_template('pages/contacto.html', usuario=usuario)
+
+@default_bp.route('/servicios')
+def servicios():
+    usuario = session.get('usuario')
+    return render_template('pages/servicios.html', usuario=usuario)
+
+@default_bp.route('/subasta')
+def subasta():
+    usuario = session.get('usuario')
+    return render_template('pages/subasta.html', usuario=usuario)

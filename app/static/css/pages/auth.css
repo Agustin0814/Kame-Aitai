@@ -1,4 +1,4 @@
-
+/* Auth Styles */
 body {
     background: linear-gradient(135deg, #6a11cb, #2575fc);
     display: flex;
@@ -8,114 +8,46 @@ body {
     position: absolute;
     top: 40px;
     margin: 0 auto;
-    width: 60%;
     display: flex;
     justify-content: space-around;
+    border-radius: 20px; /* Más redondeado */
 }
+
 .menu button {
+    background-color: #f0f0f0; /* Color de fondo por defecto */
+    color: #333; /* Color del texto por defecto */
+    border: 1px solid #ccc; /* Borde por defecto */
     padding: 10px 20px;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
 }
+
+.menu button.active {
+    background-color: #6a11cb; /* Color de fondo del botón activo (morado) */
+    color: #fff; /* Color del texto del botón activo */
+    border: 1px solid #4a0b8a; /* Borde del botón activo */
+}
+
+.menu button.inactive {
+    background-color: #2575fc; /* Color de fondo del botón inactivo (azul) */
+    color: #fff; /* Color del texto del botón inactivo */
+    border: 1px solid #1a5bb8; /* Borde del botón inactivo */
+}
+
+.form-container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
 .form-container {
     display: none;
 }
 .form-container.active {
     display: block;
-}
-
-
-.form-container {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-}
-
-h2 {
-    margin-bottom: 1.5rem;
-    color: #333;
-}
-
-.form-group {
-    margin-bottom: 1rem;
-    text-align: left;
-}
-
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    color: #555;
-}
-
-input[type="text"],
-input[type="password"] {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
-    border-color: #6a11cb;
-    box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
-}
-
-button {
-    width: 100%;
-    padding: 0.8rem;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background: linear-gradient(135deg, #2575fc, #6a11cb);
-}
-
-button:active {
-    transform: scale(0.98);
-}
-
-.register-link {
-    color: #6a11cb;
-    text-decoration: none;
-}
-
-.register-link:hover {
-    text-decoration: underline;
-}
-
-@media (max-width: 400px) {
-    .login-container {
-        width: 90%;
-        padding: 1.5rem;
-    }
-}
-
-
-
-
-
-
-
-.form-container {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
 }
 
 h2 {

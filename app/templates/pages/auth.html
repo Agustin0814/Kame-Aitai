@@ -3,7 +3,9 @@
 <!-- Titulo de la pagina --> {% block title %}Auth{% endblock %}
 
 <!-- CSS -->
-{% block styles %}<!-- CSS -->{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/auth.css') }}">
+{% endblock %}
 
 {% block content %}
 <div class="menu">

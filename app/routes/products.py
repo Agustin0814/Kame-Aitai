@@ -1,13 +1,15 @@
-from flask import Blueprint, request, redirect, url_for, render_template
+from flask import Blueprint, request, redirect, url_for, render_template, session
 from app.models import Producto, db
+
 # Crear el blueprint
 products_bp = Blueprint('products', __name__, url_prefix='/products')
 
 # Ruta para ver todos los productos
 @products_bp.route('/productos')
 def productos():
-    productos = Producto.query.all()  # Asegúrate de que 'Producto' esté importado y definido
-    return render_template('pages/productos.html', productos=productos)
+    usuario = session.get('usuario')
+    productos = Producto.query.all()
+    return render_template('pages/productos.html', productos=productos, usuario=usuario)
 
 # Ruta para agregar un producto
 @products_bp.route('/agregar_producto', methods=['POST'])

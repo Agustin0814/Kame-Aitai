@@ -1,17 +1,4 @@
-{% extends 'base.html' %}
-
-<!-- Titulo de la pagina --> {% block title %} Iniciar Secion {% endblock %}
-
-<!-- CSS -->
-{% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/auth.css') }}">
-{% endblock %}
-
-{% block menu %}
-{% endblock %}
-
-{% block content %}
-<div id="login-form" class="form-container active">
+ <div id="login-form" class="form-container active">
     <h2>Login</h2>
     <form method="POST" action="{{ url_for('auth.login') }}">
         <div class="form-group">
@@ -24,6 +11,4 @@
         </div>
         <button type="submit">Login</button>
     </form>
-    <p>¿No tienes una cuenta? <a href="{{ url_for('auth.register') }}" class="register-link">Haz click aquí</a> para registrarte.</p>
 </div>
-{% endblock %}
