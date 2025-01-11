@@ -17,6 +17,7 @@
 <!-- Contenido de la pagina inicial -->
 <main class="main-container">
     {% block content %}
+    {% include 'components/contacto/Contacto.html' %}
     {% if usuario %}
     <!-- Si el usuario esta logueado -->
     {% else %}

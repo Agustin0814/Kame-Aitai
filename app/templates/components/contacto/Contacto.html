@@ -1,0 +1,180 @@
+
+    <div class="container">
+        <div class="left-column">
+            <h2>Contacto</h2>
+            <p>Seleccione el tipo de contacto:</p>
+            <ul>
+                <li><i class="icon-revendedor"></i> Revendedor</li>
+                <li><i class="icon-asociado"></i> Asociado</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="contact-type">Tipo de contacto:</label>
+                    <select id="contact-type" name="contact-type" onchange="updateForm()">
+                        <option value="revendedor">Revendedor</option>
+                        <option value="asociado">Asociado</option>
+                    </select>
+                </div>
+                <div id="form-fields">
+                    <!-- Campos dinámicos se insertarán aquí -->
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.left-column, .right-column {
+    flex: 1;
+    padding: 20px;
+}
+
+.left-column {
+    background-color: #f0f0f0;
+}
+
+.right-column {
+    background-color: #fff;
+}
+
+h2 {
+    color: #333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.icon-revendedor::before, .icon-asociado::before {
+    content: '•';
+    color: blue;
+    margin-right: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkblue;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
+    </style>
+
+    <script>
+        function updateForm() {
+    const contactType = document.getElementById('contact-type').value;
+    const formFields = document.getElementById('form-fields');
+    formFields.innerHTML = '';
+
+    if (contactType === 'revendedor') {
+        formFields.innerHTML = `
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Teléfono:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="business">Negocio:</label>
+                <input type="text" id="business" name="business" required>
+            </div>
+            <div class="form-group">
+                <label for="products">Productos de interés:</label>
+                <input type="text" id="products" name="products" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+        `;
+    } else if (contactType === 'asociado') {
+        formFields.innerHTML = `
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Teléfono:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="company">Empresa o Servicio:</label>
+                <input type="text" id="company" name="company" required>
+            </div>
+            <div class="form-group">
+                <label for="product-type">Tipo de producto/servicio:</label>
+                <input type="text" id="product-type" name="product-type" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+        `;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', updateForm);
+    </script>
