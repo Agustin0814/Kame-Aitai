@@ -17,6 +17,7 @@ def perfil():
     productos = Producto.query.all()
     categorias = Categoria.query.all()
     marcas = Marca.query.all()
+    usuarios = Usuario.query.all()  # Obtener todos los usuarios
     
     return render_template(
         'pages/perfil.html',
@@ -26,8 +27,10 @@ def perfil():
         admin_username=user.username if user.rol.rol == 'administrador' else None,
         productos=productos,
         categorias=categorias,
-        marcas=marcas
+        marcas=marcas,
+        usuarios=usuarios  # Pasar los usuarios a la plantilla
     )
+
 @users_bp.route('/editar_perfil', methods=['POST'])
 def editar_perfil():
     if 'usuario' not in session:

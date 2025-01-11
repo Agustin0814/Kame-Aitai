@@ -1,5 +1,9 @@
 <section>
     <h2>Tabla de Productos</h2>
+    <div class="header-container">
+        <input type="text" class="search-bar" placeholder="Buscar producto..." onkeyup="filterProducts()">
+        <button class="add-button" onclick="openModal()">Agregar Producto</button>
+    </div>
     <table class="product-table">
         <thead>
             <tr>
@@ -12,16 +16,16 @@
                 <th>Marca</th>
                 <th>Foto</th>
                 <th>Categoría</th>
-                <th>Propietario</th> <!-- Nueva columna para el propietario -->
+                <th>Propietario</th>
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="productTableBody">
             {% if productos %}
                 {% for producto in productos %}
                 <tr>
                     <td>{{ producto.id }}</td>
-                    <td>{{ producto.nombre }}</td>
+                    <td class="product-name">{{ producto.nombre }}</td>
                     <td>{{ producto.descripcion }}</td>
                     <td>{{ producto.costo }}</td>
                     <td>{{ producto.precio }}</td>
@@ -29,7 +33,7 @@
                     <td>{{ producto.marca.nombre if producto.marca else 'N/A' }}</td>
                     <td><img src="{{ producto.foto }}" alt="Foto del producto" class="product-photo"></td>
                     <td>{{ producto.categoria.nombre }}</td>
-                    <td>{{ producto.usuario.nombre }}</td> <!-- Mostrar el nombre del propietario -->
+                    <td>{{ producto.usuario.nombre }}</td>
                     <td>
                         <button class="edit-button" onclick="openEditProductModal({{ producto.id }}, '{{ producto.nombre|escape }}', '{{ producto.descripcion|escape }}', {{ producto.costo }}, {{ producto.precio }}, {{ producto.existencia }}, '{{ producto.marca.nombre|escape if producto.marca else '' }}', '{{ producto.foto|escape }}', {{ producto.categoria_id }})">
                             <img src="{{ url_for('static', filename='images/iconos/editar.png') }}" alt="Editar" class="action-icon">
@@ -42,9 +46,41 @@
                 {% endfor %}
             {% else %}
                 <tr>
-                    <td colspan="11">No hay productos disponibles.</td> <!-- Actualizar el colspan -->
+                    <td colspan="11">No hay productos disponibles.</td>
                 </tr>
             {% endif %}
         </tbody>
     </table>
 </section>
+
+<style>
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .search-bar {
+        width: 70%;
+        padding: 5px;
+    }
+    .add-button {
+        padding: 5px 10px;
+    }
+</style>
+
+<script>
+    function filterProducts() {
+        const searchInput = document.querySelector('.search-bar').value.toLowerCase();
+        const productRows = document.querySelectorAll('#productTableBody tr');
+
+        productRows.forEach(row => {
+            const productName = row.querySelector('.product-name').textContent.toLowerCase();
+            if (productName.includes(searchInput)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+</script>

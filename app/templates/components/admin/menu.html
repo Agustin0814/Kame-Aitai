@@ -1,68 +1,165 @@
-<nav class="admin-menu">
-    <ul>
-        <li>
-            <a href="#tablas">Tablas</a>
-            <ul class="submenu">
-                <li><a href="{{ url_for('admin_panel', component='productos') }}">Productos</a></li>
-                <li><a href="{{ url_for('admin_panel', component='catalogo') }}">Catálogo</a></li>
-                <li><a href="{{ url_for('admin_panel', component='marcas') }}">Marcas</a></li>
-            </ul>
-        </li>
-        <li><a href="#apartados">Apartados</a></li>
-        <li>
-            <a href="#asociados">Asociados</a>
-            <ul class="submenu">
-                <li><a href="#revendedores">Revendedores</a></li>
-                <li><a href="#afiliados">Afiliados</a></li>
-            </ul>
-        </li>
-    </ul>
-</nav>
-
+<div class="menu-container">
+    <div class="dropdown">
+        <div class="dropdown-content-left">
+            <a href="#" onclick="toggleSubmenu('submenu-tablas')">Tablas</a>
+            <div class="submenu" id="submenu-tablas" style="display: none;">
+                <a href="#" onclick="showTable('productos')">Productos</a>
+                <a href="#" onclick="showTable('usuarios')">Usuarios</a>
+                <a href="#">Tienda</a>
+                <a href="#">Servicios</a>
+                <a href="#">Subasta</a>
+            </div>
+        </div>
+        <button class="dropbtn" onclick="toggleDropdown()">Opciones</button>
+        <div class="dropdown-content-right">
+            <a href="#" onclick="toggleSubmenu('submenu-reportes')">Reportes</a>
+            <div class="submenu" id="submenu-reportes" style="display: none;">
+                <a href="#">Día</a>
+                <a href="#">Semana</a>
+                <a href="#">Mes</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <style>
-    .admin-menu {
-        margin: 40px 20%;
-        text-align: center;
-        background-color: #f8f9fa;
-        border-radius: 30px;
-        padding: 10px;
+    .menu-container {
+        display: flex;
+        justify-content: center;
+        padding-top: 20px; /* Ajusta este valor según sea necesario */
     }
 
-    .admin-menu ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    .admin-menu li {
-        display: inline-block;
-        margin: 0 15px;
+    .dropdown {
         position: relative;
+        display: flex;
+        align-items: center;
     }
 
-    .admin-menu a {
-        text-decoration: none;
-        color: #007bff;
-    }
-
-    .admin-menu .submenu {
+    .dropdown-content-left, .dropdown-content-right {
         display: none;
         position: absolute;
-        top: 100%;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content-left {
+        left: -170px; /* Ajusta este valor según sea necesario */
+    }
+
+    .dropdown-content-right {
+        right: -170px; /* Ajusta este valor según sea necesario */
+    }
+
+    .dropdown-content-left a, .dropdown-content-right a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content-left a:hover, .dropdown-content-right a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .dropbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 12px;
+    }
+
+    .submenu {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        top: 100%; /* Coloca el submenu debajo del elemento padre */
         left: 0;
-        background-color: #f8f9fa;
-        border-radius: 10px;
-        padding: 10px;
-        list-style-type: none;
-        white-space: nowrap; /* Ensure the submenu width adapts to its content */
     }
 
-    .admin-menu li:hover .submenu {
+    .submenu a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
         display: block;
     }
 
-    .admin-menu .submenu li {
-        display: block;
-        margin: 10px 0; /* Increase vertical margin */
+    .submenu a:hover {
+        background-color: #f1f1f1;
     }
 </style>
+
+<script>
+    function toggleDropdown() {
+        var leftContent = document.querySelector('.dropdown-content-left');
+        var rightContent = document.querySelector('.dropdown-content-right');
+        leftContent.style.display = leftContent.style.display === 'block' ? 'none' : 'block';
+        rightContent.style.display = rightContent.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleRightContent() {
+        var rightContent = document.getElementById('rightContent');
+        rightContent.style.display = rightContent.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleSubmenu(submenuId) {
+        var submenu = document.getElementById(submenuId);
+        submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function showTable(tableId) {
+        var tables = document.querySelectorAll('.table-container');
+        tables.forEach(function(table) {
+            table.style.display = 'none';
+        });
+        document.getElementById(tableId).style.display = 'block';
+
+        // Ocultar todos los menús desplegables y submenús
+        var dropdowns = document.getElementsByClassName("dropdown-content-left");
+        for (var i = 0; i < dropdowns.length; i++) {
+            dropdowns[i].style.display = 'none';
+        }
+        var dropdownsRight = document.getElementsByClassName("dropdown-content-right");
+        for (var i = 0; i < dropdownsRight.length; i++) {
+            dropdownsRight[i].style.display = 'none';
+        }
+        var submenus = document.getElementsByClassName("submenu");
+        for (var i = 0; i < submenus.length; i++) {
+            submenus[i].style.display = 'none';
+        }
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-content-left a') && !event.target.matches('.dropdown-content-right a')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content-left");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.style.display === 'block') {
+                    openDropdown.style.display = 'none';
+                }
+            }
+            var dropdownsRight = document.getElementsByClassName("dropdown-content-right");
+            for (var i = 0; i < dropdownsRight.length; i++) {
+                var openDropdownRight = dropdownsRight[i];
+                if (openDropdownRight.style.display === 'block') {
+                    openDropdownRight.style.display = 'none';
+                }
+            }
+            var submenus = document.getElementsByClassName("submenu");
+            for (var i = 0; i < submenus.length; i++) {
+                var openSubmenu = submenus[i];
+                if (openSubmenu.style.display === 'block') {
+                    openSubmenu.style.display = 'none';
+                }
+            }
+        }
+    }
+</script>

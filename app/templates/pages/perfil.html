@@ -41,8 +41,14 @@
         {% elif user_role == 'administrador' %}
             <!-- Si el usuario es administrador -->
             <!-- Aquí puedes incluir otros templates o contenido específico para administradores -->
+            {% include 'components/admin/menu.html' %}
             {% include 'components/admin/admin.html' %}
-            {% include 'components/admin/tabla.html' %}
+            <div id="productos" class="table-container" style="display: none;">
+                {% include 'components/admin/tablas/productos.html' %}
+            </div>
+            <div id="usuarios" class="table-container" style="display: none;">
+                {% include 'components/admin/tablas/usuarios.html' %}
+            </div>
         {% else %}
             <!-- Si el rol del usuario no es reconocido -->
             <h2>Rol de usuario no reconocido</h2>
